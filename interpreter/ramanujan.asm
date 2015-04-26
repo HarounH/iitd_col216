@@ -1,5 +1,5 @@
 .main:
-	mov r0,0
+	mov r0,0x06B8
 	mov r4,0
 	mov r5,0
 	mov r6,0

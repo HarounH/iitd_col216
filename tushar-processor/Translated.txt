@@ -1,0 +1,33 @@
+.main: 
+mov r0, 371                  4c000173
+mov r1,0   					 4c400000 
+mov r2,r0					 48800000 
+mov r5,0  					 4d400000
+b check 					 90000007
+
+
+loop:
+mod r3,r2,10 				 24c8000a
+mul r4,r3, r3 				 110cc000
+mul r4,r4,r3 				 1110c000
+add  r5, r5,	r4 			 1550000
+div r2,r2,0x 00     0A 		 1c88000a 
+b check	     				 90000001 
+
+
+check:
+cmp r2, 0 					 2c080000
+bgt loop 					 8ffffff9
+beq end 					 80000001
+
+
+end:
+cmp r5,r0 					 28140000
+beq return 					 80000002
+b final 					 90000002
+
+return:mov r1,1 			 4c400001
+
+final:.print r1 			 90000000
+
+             
